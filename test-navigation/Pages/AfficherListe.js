@@ -5,7 +5,7 @@ function* Products(genPage) {
   let current = 1 + 10 * (genPage - 1);
   let max = 10 * genPage;
   let p = [];
-  while (current <= 40) {
+  while (current <= p.length) {
     while (current <= max) {
       p.push({
         "name": "mon produit-" + current,

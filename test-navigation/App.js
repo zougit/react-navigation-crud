@@ -16,15 +16,10 @@ function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Page d'accueil</Text>
+
       <View style={{ flexDirection: 'row' }}>
-        <Button
-          title="Afficher la liste"
-          onPress={() => navigation.navigate('AfficherListe')}
-        />
-        <Button
-          title="Ajouter un produit"
-          onPress={() => navigation.navigate('AjouterProduit')}
-        />
+        <Button title="Afficher la liste" onPress={() => navigation.navigate('AfficherListe')}/>
+        <Button title="Ajouter un produit" onPress={() => navigation.navigate('AjouterProduit')}/>
       </View>
     </View>
   );
@@ -42,6 +37,7 @@ function StackProd() {
       <Stack.Screen name="AjouterProduit" component={AjouterProduitScreen} />
       <Stack.Screen name="MajProduit" component={MajProduitScreen} />
       <Stack.Screen name="SupprProduit" component={SupprimerProduitScreen} />
+      <Stack.Screen name="AfficherListe" component={AfficherListe} />
     </Stack.Navigator>
   );
 }
@@ -58,7 +54,6 @@ function Home() {
   return (
     <StackHome.Navigator>
       <StackHome.Screen name="Home" component={HomeScreen}/>
-      <StackHome.Screen name="AfficherListe" component={AfficherListe} />
     </StackHome.Navigator>
   );
 }
