@@ -3,13 +3,6 @@ import { useState } from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const getAllKeys = async () => {
-  let keys = []
-  try {
-    keys = await AsyncStorage.getAllKeys()
-  } catch(e) {
-    // read key error
-  }
 
   console.log(keys)
   // example console.log result:
@@ -24,18 +17,6 @@ const clearAll = async () => {
   }
 
   console.log('Done.')
-}
-
-const ajtprod = async (Key,value) => {
-  
-  try {
-    const jsonValue = JSON.stringify(value)
-    await AsyncStorage.setItem(Key, jsonValue)
-    console.log(count)
-  } catch(e) {
-    // save error
-  }
-  console.log(value)
 
 }
 
@@ -56,16 +37,16 @@ function AjouterProduitScreen({ navigation }) {
         placeholder="insérer un nom" 
         onChangeText ={(textName) => setTextName(textName)} 
         />
-
+        
         <Text style={{ fontSize: 25 }}>Prix:</Text>
         <TextInput style={styles.inputproduit} 
         placeholder="insérer un prix" 
         onChangeText ={(textPrice) => setTextPrice(textPrice)}
         />
+
         <Button title="submit" onPress={() => ajtprod(textName,[textName,textPrice])} />
         <Button title="submit ALL" onPress={() => getAllKeys()} />
         <Button title="clear ALL" onPress={() => clearAll()} />
-
       </View>
 
       <View style={styles.boutons}>
