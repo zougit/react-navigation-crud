@@ -3,12 +3,6 @@ import { useState } from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-  console.log(keys)
-  // example console.log result:
-  // ['@MyApp_user', '@MyApp_key']
-}
-
 const clearAll = async () => {
   try {
     await AsyncStorage.clear()
