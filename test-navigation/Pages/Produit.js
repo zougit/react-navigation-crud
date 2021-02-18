@@ -6,15 +6,15 @@ function ProduitScreen({ navigation }) {
         <View styles={styles.boutons}>
             <Button 
                 styles={styles.boutons}
+                title="Ajouter un produit"
+                onPress={() => navigation.navigate('AjouterProduit')}
+            />
+            <Button 
+                styles={styles.boutons}
                 title="MAJ un produit"
                 onPress={() => navigation.navigate('MajProduit')}
             />
             <Button 
-                styles={styles.boutons}
-                title="Ajouter un produit"
-                onPress={() => navigation.navigate('AjouterProduit')}
-            />
-             <Button 
                 styles={styles.boutons}
                 title="Suppr un produit"
                 onPress={() => navigation.navigate('SupprProduit')}

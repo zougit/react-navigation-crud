@@ -1,16 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+ 
+const getMyObject = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem('products')
+    return jsonValue != null ? JSON.parse(jsonValue) : null
+  } catch (error) {
+    console.log(error)
+  }
+
+  console.log('Done.')
+}
 
 function* Products(genPage) {
   let current = 1 + 10 * (genPage - 1);
   let max = 10 * genPage;
   let p = [];
-  while (current <= p.length) {
-    while (current <= max) {
-      p.push({
-        "name": "mon produit-" + current,
-        "price": Math.random()
-      });
+  //console.log(p.length);
+  let i = 0;
+  while (current <= 40  ) {
+    while (current <= max  ) {
+      p[i];
+      // p.push ({
+      //   name : "truc"+current,
+      //   price : "",        
+      // });
       current++;
     }
     let next = yield p;
@@ -19,9 +34,21 @@ function* Products(genPage) {
 }
 const slugify = str => str ? str.replace('/\s+/g', '-') : '';
 
+async function testStorage() {
+    const greet = await getMyObject();
+    console.log('liste :\n', greet, '\n___________fin_____________');
+    return greet;
+  }
+
 function AfficherListe({ navigation }) {
   const [page, setPage] = useState(0);
   const [productList, setProductList] = useState([]);
+
+  useEffect(() => {
+    testStorage()
+  }, []);
+  
+  
 
   useEffect(() => {
     if (!productList.length) {
@@ -31,7 +58,7 @@ function AfficherListe({ navigation }) {
 
   const loadNextPage = () => {
    // console.log(page);
-    const nextPage = page + 1
+    const nextPage = page + 1;
     const prods = [...productList, ...Products(nextPage).next().value];
 
     setProductList(prods);

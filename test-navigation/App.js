@@ -27,8 +27,6 @@ function HomeScreen({ navigation }) {
 
 const Bottom = createBottomTabNavigator();
 const Stack = createStackNavigator();
-const StackUser = createStackNavigator();
-const StackHome = createStackNavigator();
 
 function StackProd() {
   return (
@@ -44,17 +42,17 @@ function StackProd() {
 
 function User() {
   return (
-    <StackUser.Navigator>
-      <StackUser.Screen name="User" component={UserScreen}/>
-    </StackUser.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen name="User" component={UserScreen}/>
+    </Stack.Navigator>
   );
 }
 
 function Home() {
   return (
-    <StackHome.Navigator>
-      <StackHome.Screen name="Home" component={HomeScreen}/>
-    </StackHome.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen}/>
+    </Stack.Navigator>
   );
 }
 
