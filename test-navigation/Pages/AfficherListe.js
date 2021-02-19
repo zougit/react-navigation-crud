@@ -37,7 +37,6 @@ const slugify = str => str ? str.replace('/\s+/g', '-') : '';
 async function testStorage() {
     const greet = await getMyObject();
     console.log('liste :\n', greet, '\n___________fin_____________');
-    return greet;
   }
 
 function AfficherListe({ navigation }) {
@@ -48,8 +47,6 @@ function AfficherListe({ navigation }) {
     testStorage()
   }, []);
   
-  
-
   useEffect(() => {
     if (!productList.length) {
       loadNextPage();
