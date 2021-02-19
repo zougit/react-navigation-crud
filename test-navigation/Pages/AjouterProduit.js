@@ -59,8 +59,6 @@ function AjouterProduitScreen({ navigation }) {
 
   const saveProduct = () => {
     let prod = { name: textName, price: textPrice };
-    // let prod = { name: "text", price: "textPrice" };
-    // let prod2 = { name: "machin", titre : "truc"};
     ajtprod(prod);
   }
 

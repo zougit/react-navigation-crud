@@ -13,25 +13,7 @@ const getMyObject = async () => {
   console.log('Done.')
 }
 
-function* Products(genPage) {
-  let current = 1 + 10 * (genPage - 1);
-  let max = 10 * genPage;
-  let p = [];
-  //console.log(p.length);
-  let i = 0;
-  while (current <= 40  ) {
-    while (current <= max  ) {
-      p[i];
-      // p.push ({
-      //   name : "truc"+current,
-      //   price : "",        
-      // });
-      current++;
-    }
-    let next = yield p;
-  } 
-  return [];
-}
+
 const slugify = str => str ? str.replace('/\s+/g', '-') : '';
 
 async function testStorage() {
@@ -44,23 +26,38 @@ function AfficherListe({ navigation }) {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    testStorage()
+    //testStorage()
   }, []);
   
   useEffect(() => {
     if (!productList.length) {
-      loadNextPage();
+      getMyObject().then((value) => {
+        value = [...value]
+        if (value.length >= page+10){
+          setProductList(value.slice(0,page+10));
+        } else {
+          setProductList(value.slice(0,value.length));
+        }
+        })
     }
   })
 
   const loadNextPage = () => {
    // console.log(page);
-    const nextPage = page + 1;
-    const prods = [...productList, ...Products(nextPage).next().value];
+    const nextPage = page + 5;
+    getMyObject().then((value) => {
+      value = [...value]
+      //console.log(value.length);
+      if (value.length >= nextPage+10){
+        setProductList(value.slice(0,nextPage+10));
+        setPage(nextPage);
+        //console.log(nextPage);
+      } else {
+        setProductList(value.slice(0,value.length));
+        //console.log(nextPage);
+      }
+    })
 
-    setProductList(prods);
-
-    setPage(nextPage);
   }
 
   return (
