@@ -49,7 +49,7 @@ function AjouterProduitScreen({ navigation }) {
   const [textPrice, setTextPrice] = useState("");
   
   React.useEffect(() => {
-    testStorage()
+    //testStorage()
   }, []);
   
   async function testStorage() {

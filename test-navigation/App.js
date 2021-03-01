@@ -8,7 +8,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AjouterProduitScreen from './Pages/AjouterProduit';
 import AfficherListe from './Pages/AfficherListe';
 import MajProduitScreen from './Pages/MajProduit';
-import SupprimerProduitScreen from './Pages/SupprProduit';
 import ProduitScreen from './Pages/Produit';
 import UserScreen from './Pages/Utilisateur';
 
@@ -34,7 +33,6 @@ function StackProd() {
       <Stack.Screen name="Produit" component={ProduitScreen}/>
       <Stack.Screen name="AjouterProduit" component={AjouterProduitScreen} />
       <Stack.Screen name="MajProduit" component={MajProduitScreen} />
-      <Stack.Screen name="SupprProduit" component={SupprimerProduitScreen} />
       <Stack.Screen name="AfficherListe" component={AfficherListe} />
     </Stack.Navigator>
   );
