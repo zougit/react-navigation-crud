@@ -77,7 +77,7 @@ function AjouterProduitScreen({ navigation }) {
           onChangeText={(textName) => setTextName(textName)}
         />
 
-        <Text style={{ fontSize: 25 }}>Prix:</Text>
+        <Text style={{ fontSize: 25 }}>Prix: </Text>
         <TextInput style={styles.inputproduit}
           placeholder="insérer un prix"
           onChangeText={(textPrice) => setTextPrice(textPrice)}

@@ -9,11 +9,6 @@ function ProduitScreen({ navigation }) {
                 title="Ajouter un produit"
                 onPress={() => navigation.navigate('AjouterProduit')}
             />
-            <Button 
-                styles={styles.boutons}
-                title="MAJ un produit"
-                onPress={() => navigation.navigate('MajProduit')}
-            />
         </View>
     );
 }

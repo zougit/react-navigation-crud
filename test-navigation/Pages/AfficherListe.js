@@ -34,10 +34,18 @@ function AfficherListe({ navigation }) {
     const [page, setPage] = useState(0);
     const [productList, setProductList] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
-    const [textName, setTextName] = useState("");
-    const [textPrice, setTextPrice] = useState("");
     const [updateId, setUpdateId] = useState(0);
     const [updateProd, setUpdateProd] = useState("");
+
+    const setTextName = (name) => {
+        const product = { ...updateProd, ...{ name: name } };
+        setUpdateProd(product);
+    };
+
+    const setTextPrice = (price) => {
+        const product = { ...updateProd, ...{ price: price } };
+        setUpdateProd(product);
+    };
 
     useEffect(() => {
        // testStorage()
@@ -92,19 +100,20 @@ function AfficherListe({ navigation }) {
         } 
         setUpdateId(prodIndex);
         setUpdateProd(prodItem);
-        console.log("state ",updateProd);
-        console.log("id ",prodIndex);
     };
 
-    const MajProduct = (index,prod) => {
-            getMyObject().then((value) => {
-            value.splice(index, 0,prod);
-            AsyncStorage.setItem("products", JSON.stringify(value));
-            setProductList(value);
+    const MajProduct = () => {
+        // console.log(prod);
+        getMyObject().then((products) => {
+         
+          products[updateId] = updateProd;
+          AsyncStorage.setItem("products", JSON.stringify(products))
+           // Ici il faut s'assurer de récupérer le nombre d'élements correspondant à la page sur laquelle on se trouve 
+          setProductList(products);
         });
-        console.log();
-    };
-
+        setModalVisible(!modalVisible);
+      };
+//console.log(typeof [textName, textPrice]);
     return (
         <View style={{ flex: 1 }}>
             <View style={styles.list}>
@@ -220,7 +229,7 @@ function AfficherListe({ navigation }) {
 
                         <Button
                             title="submit"
-                            onPress={() => MajProduct(updateId,setUpdateProd([textName, textPrice]))}
+                            onPress={() => MajProduct()}
                         />
                     </View>
                 </View>

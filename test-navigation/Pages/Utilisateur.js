@@ -4,11 +4,7 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 function UserScreen({ navigation }) {
     return (
         <View>
-            <Button
-                styles={styles.boutons}
-                title="MAJ un produit"
-                onPress={() => navigation.navigate('MajProduit')}
-            />
+           
         </View>
     );
 }
